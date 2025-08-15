@@ -869,7 +869,7 @@ input[type=range]::-moz-range-thumb {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 30px;
+    gap: 80px;
 }
 
 #quest-scroll-modal button {
