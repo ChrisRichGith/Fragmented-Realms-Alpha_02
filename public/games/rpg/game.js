@@ -1,9 +1,9 @@
 const NPC_CLASSES = {
-    'Krieger': { img: { male: '/images/RPG/Krieger.png', female: '/images/RPG/Kriegerin.png' } },
-    'Schurke': { img: { male: '/images/RPG/Schurke.png', female: '/images/RPG/Schurkin.png' } },
-    'Bogenschütze': { img: { male: '/images/RPG/Archer.png', female: '/images/RPG/Archerin.png' } },
-    'Magier': { img: { male: '/images/RPG/Magier.png', female: '/images/RPG/Magierin.png' } },
-    'Heiler': { img: { male: '/images/RPG/Heiler.png', female: '/images/RPG/Heilerin.png' } }
+    'Krieger': { img: { male: '/images/RPG/Charakter/Krieger_m.png', female: '/images/RPG/Charakter/Krieger_w.png' } },
+    'Schurke': { img: { male: '/images/RPG/Charakter/Schurke_m.png', female: '/images/RPG/Charakter/Schurke_w.png' } },
+    'Bogenschütze': { img: { male: '/images/RPG/Charakter/Archer_m.png', female: '/images/RPG/Charakter/Archer_w.png' } },
+    'Magier': { img: { male: '/images/RPG/Charakter/Magier_m.png', female: '/images/RPG/Charakter/Magier_w.png' } },
+    'Heiler': { img: { male: '/images/RPG/Charakter/Heiler_m.png', female: '/images/RPG/Charakter/Heiler_w.png' } }
 };
 
 const LOCATIONS = {
@@ -69,8 +69,8 @@ const SECRET_CLASSES = [
         requirements: { strength: 1, dexterity: 7, intelligence: 7 },
         message: 'Herzlichen Glückwunsch: Du hast den Arkanen Komponisten freigeschaltet.',
         img: {
-            male: '/images/RPG/arkanerKomponist.png',
-            female: '/images/RPG/arkaneKomponistin.png'
+            male: '/images/RPG/Charakter/arkaner_m.png',
+            female: '/images/RPG/Charakter/arkaner_w.png'
         }
     }
 ];
@@ -423,7 +423,7 @@ function setupNpcSelection() {
         }
 
         const savedNpc = npcParty[i];
-        const imgSrc = savedNpc ? NPC_CLASSES[savedNpc.className].img[savedNpc.gender] : '/images/RPG/male_silhouette.svg';
+        const imgSrc = savedNpc ? NPC_CLASSES[savedNpc.className].img[savedNpc.gender] : '/images/RPG/Charakter/male_silhouette.svg';
 
         card.innerHTML = `
             <img src="${imgSrc}" alt="NPC ${i + 1}">
@@ -454,7 +454,7 @@ function setupNpcSelection() {
                 img.src = NPC_CLASSES[selectedClass].img.male;
                 npcParty[slot] = { className: selectedClass, gender: 'male' }; // Save selection
             } else {
-                img.src = '/images/RPG/male_silhouette.svg';
+                img.src = '/images/RPG/Charakter/male_silhouette.svg';
                 npcParty[slot] = null; // Clear selection
             }
         });
@@ -716,37 +716,37 @@ function populateCharacterCreation() {
             name: 'Krieger',
             description: 'Stark und widerstandsfähig, ein Meister des Nahkampfes.',
             stats: { strength: 8, dexterity: 4, intelligence: 3 },
-            img: { male: '/images/RPG/Krieger.png', female: '/images/RPG/Kriegerin.png' }
+            img: { male: '/images/RPG/Charakter/Krieger_m.png', female: '/images/RPG/Charakter/Krieger_w.png' }
         },
         {
             name: 'Magier',
             description: 'Beherrscht die arkanen Künste, um Feinde aus der Ferne zu vernichten.',
             stats: { strength: 2, dexterity: 5, intelligence: 8 },
-            img: { male: '/images/RPG/Magier.png', female: '/images/RPG/Magierin.png' }
+            img: { male: '/images/RPG/Charakter/Magier_m.png', female: '/images/RPG/Charakter/Magier_w.png' }
         },
         {
             name: 'Schurke',
             description: 'Ein listiger Kämpfer, der aus den Schatten zuschlägt.',
             stats: { strength: 4, dexterity: 8, intelligence: 3 },
-            img: { male: '/images/RPG/Schurke.png', female: '/images/RPG/Schurkin.png' }
+            img: { male: '/images/RPG/Charakter/Schurke_m.png', female: '/images/RPG/Charakter/Schurke_w.png' }
         },
         {
             name: 'Bogenschütze',
             description: 'Ein Meisterschütze mit Pfeil und Bogen.',
             stats: { strength: 4, dexterity: 8, intelligence: 3 },
-            img: { male: '/images/RPG/Archer.png', female: '/images/RPG/Archerin.png' }
+            img: { male: '/images/RPG/Charakter/Archer_m.png', female: '/images/RPG/Charakter/Archer_w.png' }
         },
         {
             name: 'Heiler',
             description: 'Ein heiliger Kleriker, der Verbündete heilt und schützt.',
             stats: { strength: 3, dexterity: 4, intelligence: 8 },
-            img: { male: '/images/RPG/Heiler.png', female: '/images/RPG/Heilerin.png' }
+            img: { male: '/images/RPG/Charakter/Heiler_m.png', female: '/images/RPG/Charakter/Heiler_w.png' }
         },
         {
             name: 'Eigener Charakter',
             description: 'Erstelle einen Charakter mit frei verteilbaren Attributpunkten.',
             isCustom: true,
-            img: { male: '/images/RPG/male_silhouette.svg', female: '/images/RPG/female_silhouette.svg' }
+            img: { male: '/images/RPG/Charakter/male_silhouette.svg', female: '/images/RPG/Charakter/female_silhouette.svg' }
         }
     ];
 
