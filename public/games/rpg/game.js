@@ -10,55 +10,55 @@ const LOCATIONS = {
     'city_1': {
         name: 'Varethyn',
         coords: { top: '11.24%', left: '26.06%', width: '10%', height: '15%' },
-        detailMap: '/images/RPG/Citymap.png',
+        detailMap: '/images/RPG/Maps/Citymap.png',
         actions: ['trade', 'quest', 'rest']
     },
     'village_2': {
         name: 'Dornhall',
         coords: { top: '38.06%', left: '16.24%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     },
     'village_3': {
         name: 'Myrrgarde',
         coords: { top: '48.12%', left: '31.15%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     },
     'forest_4': {
         name: 'Ysmereth',
         coords: { top: '25.25%', left: '45.77%', width: '15%', height: '15%' },
-        detailMap: '/images/RPG/Wald.png',
+        detailMap: '/images/RPG/Maps/Wald.png',
         actions: ['explore', 'gather']
     },
     'village_5': {
         name: 'Elaris',
         coords: { top: '65.24%', left: '15.02%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     },
     'city_6': {
         name: 'Bruchhain',
         coords: { top: '65.92%', left: '35.78%', width: '10%', height: '10%' },
-        detailMap: '/images/RPG/Citymap.png',
+        detailMap: '/images/RPG/Maps/Citymap.png',
         actions: ['trade', 'quest', 'rest']
     },
     'city_7': {
         name: 'Tharvok',
         coords: { top: '52.8%', left: '67.05%', width: '13%', height: '13%' },
-        detailMap: '/images/RPG/Citymap.png',
+        detailMap: '/images/RPG/Maps/Citymap.png',
         actions: ['trade', 'quest', 'rest']
     },
     'dungeon_8': {
         name: 'Schattenfels',
         coords: { top: '68.45%', left: '72.44%', width: '9%', height: '9%' },
-        detailMap: '/images/RPG/Dungeon.png',
+        detailMap: '/images/RPG/Maps/Dungeon.png',
         actions: ['enter_dungeon']
     },
     'village_9': {
         name: 'Kragmoor',
         coords: { top: '26.54%', left: '80.27%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     }
 };
