@@ -164,6 +164,10 @@ function init() {
         loadGameModal: document.getElementById('load-game-modal'),
         saveSlotsContainer: document.getElementById('save-slots-container'),
         cancelLoadBtn: document.getElementById('cancel-load-btn'),
+
+        // Quest Scroll Modal
+        questScrollModal: document.getElementById('quest-scroll-modal'),
+        questDeclineBtn: document.getElementById('quest-decline-btn'),
     };
     
     // Set up event listeners
@@ -350,6 +354,11 @@ function setupEventListeners() {
             alert(`Fehler beim Speichern: ${error.message}`);
         }
     });
+
+    // Quest Scroll Modal Listeners
+    ui.questDeclineBtn.addEventListener('click', () => {
+        ui.questScrollModal.style.display = 'none';
+    });
 }
 
 // Show a specific screen
@@ -502,8 +511,6 @@ function showLocationDetail(locationId) {
     const location = LOCATIONS[locationId];
     if (!location) return;
 
-    // --- New Animation Logic ---
-
     // 1. Prepare the detail screen content
     const locationName = document.getElementById('location-name');
     const detailMap = document.getElementById('location-detail-map');
@@ -516,6 +523,13 @@ function showLocationDetail(locationId) {
         const actionButton = document.createElement('button');
         actionButton.className = 'action-btn';
         actionButton.textContent = action.replace('_', ' ');
+
+        if (action === 'quest') {
+            actionButton.addEventListener('click', () => {
+                ui.questScrollModal.style.display = 'flex';
+            });
+        }
+
         actionsContainer.appendChild(actionButton);
     });
 
@@ -525,15 +539,17 @@ function showLocationDetail(locationId) {
     ui.locationTitleDisplay.textContent = location.name;
     ui.locationTitleDisplay.style.opacity = 1;
 
-    // 3. Trigger the opening animation
+    // 3. Make the detail screen visible BEFORE the animation starts
+    ui.locationDetailScreen.style.display = 'block';
+
+    // 4. Trigger the opening animation
     const mapLeft = document.getElementById('world-map-left');
     const mapRight = document.getElementById('world-map-right');
     mapLeft.classList.add('split');
     mapRight.classList.add('split');
 
-    // 4. After the animation, show the detail screen and send map to back
+    // 5. After the animation, send the world map wrapper to the back
     setTimeout(() => {
-        ui.locationDetailScreen.style.display = 'block';
         ui.worldMapWrapper.style.zIndex = 0;
     }, 800); // Must match animation duration
 }
