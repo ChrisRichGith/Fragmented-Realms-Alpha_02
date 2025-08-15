@@ -502,8 +502,6 @@ function showLocationDetail(locationId) {
     const location = LOCATIONS[locationId];
     if (!location) return;
 
-    // --- New Animation Logic ---
-
     // 1. Prepare the detail screen content
     const locationName = document.getElementById('location-name');
     const detailMap = document.getElementById('location-detail-map');
@@ -525,15 +523,17 @@ function showLocationDetail(locationId) {
     ui.locationTitleDisplay.textContent = location.name;
     ui.locationTitleDisplay.style.opacity = 1;
 
-    // 3. Trigger the opening animation
+    // 3. Make the detail screen visible BEFORE the animation starts
+    ui.locationDetailScreen.style.display = 'block';
+
+    // 4. Trigger the opening animation
     const mapLeft = document.getElementById('world-map-left');
     const mapRight = document.getElementById('world-map-right');
     mapLeft.classList.add('split');
     mapRight.classList.add('split');
 
-    // 4. After the animation, show the detail screen and send map to back
+    // 5. After the animation, send the world map wrapper to the back
     setTimeout(() => {
-        ui.locationDetailScreen.style.display = 'block';
         ui.worldMapWrapper.style.zIndex = 0;
     }, 800); // Must match animation duration
 }
