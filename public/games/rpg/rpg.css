@@ -178,7 +178,7 @@ body, html {
     top: 0;
     width: 50%;
     height: 100%;
-    background-image: url('/images/RPG/Worldmap.png');
+    background-image: url('/images/RPG/Maps/Worldmap.png');
     background-size: 200% 100%;
     transition: transform 0.8s ease-in-out;
 }
