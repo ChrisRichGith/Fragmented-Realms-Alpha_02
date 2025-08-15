@@ -164,6 +164,10 @@ function init() {
         loadGameModal: document.getElementById('load-game-modal'),
         saveSlotsContainer: document.getElementById('save-slots-container'),
         cancelLoadBtn: document.getElementById('cancel-load-btn'),
+
+        // Quest Scroll Modal
+        questScrollModal: document.getElementById('quest-scroll-modal'),
+        questDeclineBtn: document.getElementById('quest-decline-btn'),
     };
     
     // Set up event listeners
@@ -350,6 +354,11 @@ function setupEventListeners() {
             alert(`Fehler beim Speichern: ${error.message}`);
         }
     });
+
+    // Quest Scroll Modal Listeners
+    ui.questDeclineBtn.addEventListener('click', () => {
+        ui.questScrollModal.style.display = 'none';
+    });
 }
 
 // Show a specific screen
@@ -514,6 +523,13 @@ function showLocationDetail(locationId) {
         const actionButton = document.createElement('button');
         actionButton.className = 'action-btn';
         actionButton.textContent = action.replace('_', ' ');
+
+        if (action === 'quest') {
+            actionButton.addEventListener('click', () => {
+                ui.questScrollModal.style.display = 'flex';
+            });
+        }
+
         actionsContainer.appendChild(actionButton);
     });
 
