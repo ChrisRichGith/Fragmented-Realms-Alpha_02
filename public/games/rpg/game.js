@@ -1,64 +1,64 @@
 const NPC_CLASSES = {
-    'Krieger': { img: { male: '/images/RPG/Krieger.png', female: '/images/RPG/Kriegerin.png' } },
-    'Schurke': { img: { male: '/images/RPG/Schurke.png', female: '/images/RPG/Schurkin.png' } },
-    'Bogenschütze': { img: { male: '/images/RPG/Archer.png', female: '/images/RPG/Archerin.png' } },
-    'Magier': { img: { male: '/images/RPG/Magier.png', female: '/images/RPG/Magierin.png' } },
-    'Heiler': { img: { male: '/images/RPG/Heiler.png', female: '/images/RPG/Heilerin.png' } }
+    'Krieger': { img: { male: '/images/RPG/Charakter/Krieger_m.png', female: '/images/RPG/Charakter/Krieger_w.png' } },
+    'Schurke': { img: { male: '/images/RPG/Charakter/Schurke_m.png', female: '/images/RPG/Charakter/Schurke_w.png' } },
+    'Bogenschütze': { img: { male: '/images/RPG/Charakter/Archer_m.png', female: '/images/RPG/Charakter/Archer_w.png' } },
+    'Magier': { img: { male: '/images/RPG/Charakter/Magier_m.png', female: '/images/RPG/Charakter/Magier_w.png' } },
+    'Heiler': { img: { male: '/images/RPG/Charakter/Heiler_m.png', female: '/images/RPG/Charakter/Heiler_w.png' } }
 };
 
 const LOCATIONS = {
     'city_1': {
         name: 'Varethyn',
         coords: { top: '11.24%', left: '26.06%', width: '10%', height: '15%' },
-        detailMap: '/images/RPG/Citymap.png',
+        detailMap: '/images/RPG/Maps/Citymap.png',
         actions: ['trade', 'quest', 'rest']
     },
     'village_2': {
         name: 'Dornhall',
         coords: { top: '38.06%', left: '16.24%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     },
     'village_3': {
         name: 'Myrrgarde',
         coords: { top: '48.12%', left: '31.15%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     },
     'forest_4': {
         name: 'Ysmereth',
         coords: { top: '25.25%', left: '45.77%', width: '15%', height: '15%' },
-        detailMap: '/images/RPG/Wald.png',
+        detailMap: '/images/RPG/Maps/Wald.png',
         actions: ['explore', 'gather']
     },
     'village_5': {
         name: 'Elaris',
         coords: { top: '65.24%', left: '15.02%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     },
     'city_6': {
         name: 'Bruchhain',
         coords: { top: '65.92%', left: '35.78%', width: '10%', height: '10%' },
-        detailMap: '/images/RPG/Citymap.png',
+        detailMap: '/images/RPG/Maps/Citymap.png',
         actions: ['trade', 'quest', 'rest']
     },
     'city_7': {
         name: 'Tharvok',
         coords: { top: '52.8%', left: '67.05%', width: '13%', height: '13%' },
-        detailMap: '/images/RPG/Citymap.png',
+        detailMap: '/images/RPG/Maps/Citymap.png',
         actions: ['trade', 'quest', 'rest']
     },
     'dungeon_8': {
         name: 'Schattenfels',
         coords: { top: '68.45%', left: '72.44%', width: '9%', height: '9%' },
-        detailMap: '/images/RPG/Dungeon.png',
+        detailMap: '/images/RPG/Maps/Dungeon.png',
         actions: ['enter_dungeon']
     },
     'village_9': {
         name: 'Kragmoor',
         coords: { top: '26.54%', left: '80.27%', width: '8%', height: '8%' },
-        detailMap: '/images/RPG/Villagemap.png',
+        detailMap: '/images/RPG/Maps/Villagemap.png',
         actions: ['quest', 'rest']
     }
 };
@@ -69,8 +69,8 @@ const SECRET_CLASSES = [
         requirements: { strength: 1, dexterity: 7, intelligence: 7 },
         message: 'Herzlichen Glückwunsch: Du hast den Arkanen Komponisten freigeschaltet.',
         img: {
-            male: '/images/RPG/arkanerKomponist.png',
-            female: '/images/RPG/arkaneKomponistin.png'
+            male: '/images/RPG/Charakter/arkaner_m.png',
+            female: '/images/RPG/Charakter/arkaner_w.png'
         }
     }
 ];
@@ -423,7 +423,7 @@ function setupNpcSelection() {
         }
 
         const savedNpc = npcParty[i];
-        const imgSrc = savedNpc ? NPC_CLASSES[savedNpc.className].img[savedNpc.gender] : '/images/RPG/male_silhouette.svg';
+        const imgSrc = savedNpc ? NPC_CLASSES[savedNpc.className].img[savedNpc.gender] : '/images/RPG/Charakter/male_silhouette.svg';
 
         card.innerHTML = `
             <img src="${imgSrc}" alt="NPC ${i + 1}">
@@ -454,7 +454,7 @@ function setupNpcSelection() {
                 img.src = NPC_CLASSES[selectedClass].img.male;
                 npcParty[slot] = { className: selectedClass, gender: 'male' }; // Save selection
             } else {
-                img.src = '/images/RPG/male_silhouette.svg';
+                img.src = '/images/RPG/Charakter/male_silhouette.svg';
                 npcParty[slot] = null; // Clear selection
             }
         });
@@ -716,37 +716,37 @@ function populateCharacterCreation() {
             name: 'Krieger',
             description: 'Stark und widerstandsfähig, ein Meister des Nahkampfes.',
             stats: { strength: 8, dexterity: 4, intelligence: 3 },
-            img: { male: '/images/RPG/Krieger.png', female: '/images/RPG/Kriegerin.png' }
+            img: { male: '/images/RPG/Charakter/Krieger_m.png', female: '/images/RPG/Charakter/Krieger_w.png' }
         },
         {
             name: 'Magier',
             description: 'Beherrscht die arkanen Künste, um Feinde aus der Ferne zu vernichten.',
             stats: { strength: 2, dexterity: 5, intelligence: 8 },
-            img: { male: '/images/RPG/Magier.png', female: '/images/RPG/Magierin.png' }
+            img: { male: '/images/RPG/Charakter/Magier_m.png', female: '/images/RPG/Charakter/Magier_w.png' }
         },
         {
             name: 'Schurke',
             description: 'Ein listiger Kämpfer, der aus den Schatten zuschlägt.',
             stats: { strength: 4, dexterity: 8, intelligence: 3 },
-            img: { male: '/images/RPG/Schurke.png', female: '/images/RPG/Schurkin.png' }
+            img: { male: '/images/RPG/Charakter/Schurke_m.png', female: '/images/RPG/Charakter/Schurke_w.png' }
         },
         {
             name: 'Bogenschütze',
             description: 'Ein Meisterschütze mit Pfeil und Bogen.',
             stats: { strength: 4, dexterity: 8, intelligence: 3 },
-            img: { male: '/images/RPG/Archer.png', female: '/images/RPG/Archerin.png' }
+            img: { male: '/images/RPG/Charakter/Archer_m.png', female: '/images/RPG/Charakter/Archer_w.png' }
         },
         {
             name: 'Heiler',
             description: 'Ein heiliger Kleriker, der Verbündete heilt und schützt.',
             stats: { strength: 3, dexterity: 4, intelligence: 8 },
-            img: { male: '/images/RPG/Heiler.png', female: '/images/RPG/Heilerin.png' }
+            img: { male: '/images/RPG/Charakter/Heiler_m.png', female: '/images/RPG/Charakter/Heiler_w.png' }
         },
         {
             name: 'Eigener Charakter',
             description: 'Erstelle einen Charakter mit frei verteilbaren Attributpunkten.',
             isCustom: true,
-            img: { male: '/images/RPG/male_silhouette.svg', female: '/images/RPG/female_silhouette.svg' }
+            img: { male: '/images/RPG/Charakter/male_silhouette.svg', female: '/images/RPG/Charakter/female_silhouette.svg' }
         }
     ];
 
