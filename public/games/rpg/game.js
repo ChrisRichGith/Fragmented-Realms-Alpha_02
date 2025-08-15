@@ -134,6 +134,11 @@ function init() {
         // Audio
         bgMusic: document.getElementById('bg-music'),
         sfxClick: document.getElementById('sfx-click'),
+        sfxSlideOpen: document.getElementById('sfx-slide-open'),
+        sfxSlideClose: document.getElementById('sfx-slide-close'),
+        sfxParchment: document.getElementById('sfx-parchment'),
+        sfxQuestAccept: document.getElementById('sfx-quest-accept'),
+        sfxQuestDecline: document.getElementById('sfx-quest-decline'),
         musicVolumeSlider: document.getElementById('music-volume'),
         sfxVolumeSlider: document.getElementById('sfx-volume'),
 
@@ -167,6 +172,7 @@ function init() {
 
         // Quest Scroll Modal
         questScrollModal: document.getElementById('quest-scroll-modal'),
+        questAcceptBtn: document.getElementById('quest-accept-btn'),
         questDeclineBtn: document.getElementById('quest-decline-btn'),
     };
     
@@ -224,6 +230,10 @@ function setupEventListeners() {
     ui.startGameBtn.addEventListener('click', () => showScreen('game'));
     ui.startGameDirektBtn.addEventListener('click', () => showScreen('game'));
     ui.backToWorldMapBtn.addEventListener('click', () => {
+        if (ui.sfxSlideClose) {
+            ui.sfxSlideClose.currentTime = 0;
+            ui.sfxSlideClose.play();
+        }
         // Bring map wrapper to front so the closing animation is visible
         ui.worldMapWrapper.style.zIndex = 2;
 
@@ -356,7 +366,20 @@ function setupEventListeners() {
     });
 
     // Quest Scroll Modal Listeners
+    ui.questAcceptBtn.addEventListener('click', () => {
+        if (ui.sfxQuestAccept) {
+            ui.sfxQuestAccept.currentTime = 0;
+            ui.sfxQuestAccept.play();
+        }
+        // Future quest acceptance logic goes here
+        ui.questScrollModal.style.display = 'none';
+    });
+
     ui.questDeclineBtn.addEventListener('click', () => {
+        if (ui.sfxQuestDecline) {
+            ui.sfxQuestDecline.currentTime = 0;
+            ui.sfxQuestDecline.play();
+        }
         ui.questScrollModal.style.display = 'none';
     });
 }
@@ -507,6 +530,10 @@ function createLocationOverlays() {
 }
 
 function showLocationDetail(locationId) {
+    if (ui.sfxSlideOpen) {
+        ui.sfxSlideOpen.currentTime = 0;
+        ui.sfxSlideOpen.play();
+    }
     currentLocationId = locationId;
     const location = LOCATIONS[locationId];
     if (!location) return;
@@ -526,6 +553,10 @@ function showLocationDetail(locationId) {
 
         if (action === 'quest') {
             actionButton.addEventListener('click', () => {
+                if (ui.sfxParchment) {
+                    ui.sfxParchment.currentTime = 0;
+                    ui.sfxParchment.play();
+                }
                 ui.questScrollModal.style.display = 'flex';
             });
         }
