@@ -371,8 +371,16 @@ function setupEventListeners() {
             ui.sfxQuestAccept.currentTime = 0;
             ui.sfxQuestAccept.play();
         }
-        // Future quest acceptance logic goes here
-        ui.questScrollModal.style.display = 'none';
+
+        // Save the current NPC party to localStorage for the battle screen
+        try {
+            localStorage.setItem('npcParty', JSON.stringify(npcParty));
+        } catch (e) {
+            console.error("Could not save NPC party to localStorage:", e);
+        }
+
+        // Navigate to the battle screen
+        window.location.href = 'battle.html';
     });
 
     ui.questDeclineBtn.addEventListener('click', () => {
@@ -483,8 +491,15 @@ function setupNpcSelection() {
 
             if (selectedClass && NPC_CLASSES[selectedClass]) {
                 // For now, let's assume a default gender, e.g., 'male'
-                img.src = NPC_CLASSES[selectedClass].img.male;
-                npcParty[slot] = { className: selectedClass, gender: 'male' }; // Save selection
+                const gender = 'male';
+                const npcData = NPC_CLASSES[selectedClass];
+                img.src = npcData.img[gender];
+                // Create a full character object for the NPC
+                npcParty[slot] = {
+                    name: selectedClass,
+                    image: npcData.img[gender],
+                    // We can add stats here later if needed
+                };
             } else {
                 img.src = '/images/RPG/Charakter/male_silhouette.svg';
                 npcParty[slot] = null; // Clear selection
